@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - PhysicsCube
+  - Red Cube
+  - Green Cube
+  - Purple Cube
   layers:
   - Default
   - TransparentFX
