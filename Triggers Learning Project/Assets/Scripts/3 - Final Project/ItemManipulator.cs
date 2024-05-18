@@ -7,6 +7,7 @@ public class ItemManipulator : MonoBehaviour
     [SerializeField] Transform objectHolder;
 
     Rigidbody grabbedRB;
+    BoxCollider col;
 
     void Update()
     {
@@ -18,6 +19,8 @@ public class ItemManipulator : MonoBehaviour
             {
                 grabbedRB.isKinematic = false;
                 grabbedRB.AddForce(camera.transform.forward * throwForce, ForceMode.VelocityChange);
+                col.isTrigger = false;
+                col = null;
                 grabbedRB = null;
             }
         }
@@ -27,6 +30,8 @@ public class ItemManipulator : MonoBehaviour
             if (grabbedRB)
             {
                 grabbedRB.isKinematic = false;
+                col.isTrigger = false;
+                col = null;
                 grabbedRB = null;
             }
             else
@@ -39,6 +44,8 @@ public class ItemManipulator : MonoBehaviour
                     if (grabbedRB)
                     {
                         grabbedRB.isKinematic = true;
+                        col = hit.transform.gameObject.GetComponent<BoxCollider>();
+                        col.isTrigger = true;
                     }
                 }
             }
